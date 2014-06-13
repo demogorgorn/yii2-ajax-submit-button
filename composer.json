@@ -1,0 +1,23 @@
+{
+	"name": "demogorgorn/yii2-ajax-submit-button",
+	"description": "AjaxSubmitButton renders an ajax button which is very similar to ajaxSubmitButton from Yii1.",
+	"keywords": ["ajax", "submit", "button", "extension", "widget"],
+	"homepage": "https://github.com/demogorgorn/yii2-ajax-submit-button",
+	"type": "yii2-extension",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Oleg Martemjanov",
+			"email": "demogorgorn@gmail.com",
+			"homepage" : "http://foreign.by"
+		}
+	],
+	"require": {
+		"yiisoft/yii2": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"demogorgorn\\ajax\\": ""
+		}
+	}
+}
