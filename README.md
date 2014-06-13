@@ -3,7 +3,7 @@ AjaxSubmitButton for Yii 2
 
 This is the AjaxSubmitButton widget that renders an ajax button which is very similar to ajaxSubmitButton from Yii1 for Yii 2. 
 
-Example of usage of the widget with form and other custom widget (in this case Select2).
+Example of usage of the widget with form and other custom widget (in this case Select2 widget).
 
 The view:
 ```php
