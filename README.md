@@ -65,13 +65,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require demogorgorn/yii2-ajaxSubmitButton "*"
+php composer.phar require demogorgorn/yii2-ajax-submit-button "*"
 ```
 
 or add
 
 ```
-"demogorgorn/yii2-ajaxSubmitButton": "*"
+"demogorgorn/yii2-ajax-submit-button": "*"
 ```
 
 to the require section of your `composer.json` file and run `composer update`.
