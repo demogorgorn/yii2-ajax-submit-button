@@ -91,6 +91,14 @@ class AjaxSubmitButton extends Widget
     {
         $view = $this->getView();
 
+        if(!isset($this->ajaxOptions['type'])) {
+            $this->ajaxOptions['type'] = new \yii\web\JsExpression('$(this).parents("form").attr("method")');
+        }
+
+        if(!isset($this->ajaxOptions['url'])) {
+            $this->ajaxOptions['url'] = new \yii\web\JsExpression('$(this).parents("form").attr("action")');
+        }
+
         if(!isset($this->ajaxOptions['data']) && isset($this->ajaxOptions['type']))
             $this->ajaxOptions['data'] = new \yii\web\JsExpression('$(this).parents("form").serialize()');
 

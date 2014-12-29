@@ -71,7 +71,7 @@ php composer.phar require demogorgorn/yii2-ajax-submit-button "*"
 or add
 
 ```
-"demogorgorn/yii2-yii2-ajax-submit-button": "*"
+"demogorgorn/yii2-ajax-submit-button": "*"
 ```
 
 to the require section of your `composer.json` file and run `composer update`.
