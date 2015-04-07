@@ -4,6 +4,7 @@ namespace demogorgorn\ajax;
 use yii\base\Widget;
 use yii\helpers\Html;
 use yii\helpers\Json;
+use yii\web\JsExpression;
 
 /**
  * AjaxSubmitButton renders an ajax button which is very similar to ajaxSubmitButton from Yii1.
@@ -66,12 +67,15 @@ class AjaxSubmitButton extends Widget
 	 */
 	public $encodeLabel = true;
 
+    public $clickedButtonVarName = '_clickedButton';
+
 	/**
 	 * Initializes the widget.
 	 */
 	public function init()
 	{
 		parent::init();
+
 		if (!isset($this->options['id'])) {
 			$this->options['id'] = $this->getId();
 		}
@@ -83,8 +87,9 @@ class AjaxSubmitButton extends Widget
 
     	echo Html::tag($this->tagName, $this->encodeLabel ? Html::encode($this->label) : $this->label, $this->options);
         
-        if (!empty($this->ajaxOptions))
+        if (!empty($this->ajaxOptions)) {
             $this->registerAjaxScript();
+        }
     }
 
     protected function registerAjaxScript()
@@ -92,21 +97,23 @@ class AjaxSubmitButton extends Widget
         $view = $this->getView();
 
         if(!isset($this->ajaxOptions['type'])) {
-            $this->ajaxOptions['type'] = new \yii\web\JsExpression('$(this).parents("form").attr("method")');
+            $this->ajaxOptions['type'] = new JsExpression('$(this).parents("form").attr("method")');
         }
 
         if(!isset($this->ajaxOptions['url'])) {
-            $this->ajaxOptions['url'] = new \yii\web\JsExpression('$(this).parents("form").attr("action")');
+            $this->ajaxOptions['url'] = new JsExpression('$(this).parents("form").attr("action")');
         }
 
         if(!isset($this->ajaxOptions['data']) && isset($this->ajaxOptions['type']))
-            $this->ajaxOptions['data'] = new \yii\web\JsExpression('$(this).parents("form").serialize()');
+            $this->ajaxOptions['data'] = new JsExpression('$(this).parents("form").serialize()');
 
         $this->ajaxOptions= Json::encode($this->ajaxOptions);
-        $view->registerJs("$( '#".$this->options['id']."' ).click(function() {
-                $.ajax(". $this->ajaxOptions ."); 
+        $view->registerJs("$('#".$this->options['id']."').click(function() {
+                " . (null !== $this->clickedButtonVarName ? "var {$this->clickedButtonVarName} = this;" : "") . "
+                $.ajax(" . $this->ajaxOptions . ");
                 return false;
             });");
     }
 
 } 
+
