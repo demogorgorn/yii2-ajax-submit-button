@@ -66,8 +66,18 @@ class AjaxSubmitButton extends Widget
 	 * @var boolean whether the label should be HTML-encoded.
 	 */
 	public $encodeLabel = true;
-
+    /**
+     * @var string js object name.
+     *      it is unused when useWithActiveForm is enabled
+     */
     public $clickedButtonVarName = '_clickedButton';
+    /**
+     * @var boolean whether the button should not be used with ActiveForm.
+     *      string the id of ActiveForm to use the button with 
+     */
+    public $useWithActiveForm = false;
+
+
 
 	/**
 	 * Initializes the widget.
@@ -88,7 +98,11 @@ class AjaxSubmitButton extends Widget
     	echo Html::tag($this->tagName, $this->encodeLabel ? Html::encode($this->label) : $this->label, $this->options);
         
         if (!empty($this->ajaxOptions)) {
-            $this->registerAjaxScript();
+            
+            if ($this->useWithActiveForm !== false)
+                $this->registerAjaxFormScript();
+            else
+                $this->registerAjaxScript();
         }
     }
 
@@ -113,6 +127,38 @@ class AjaxSubmitButton extends Widget
                 $.ajax(" . $this->ajaxOptions . ");
                 return false;
             });");
+    }
+
+    protected function registerAjaxFormScript()
+    {
+        $view = $this->getView();
+
+        if(!isset($this->ajaxOptions['type'])) {
+            $this->ajaxOptions['type'] = new JsExpression('$(this).attr("method")');
+        }
+
+        if(!isset($this->ajaxOptions['url'])) {
+            $this->ajaxOptions['url'] = new JsExpression('$(this).attr("action")');
+        }
+
+        if(!isset($this->ajaxOptions['data']) && isset($this->ajaxOptions['type']))
+            $this->ajaxOptions['data'] = new JsExpression('$(this).serialize()');
+
+        $this->ajaxOptions= Json::encode($this->ajaxOptions);
+
+$js = <<<SEL
+        $(document).on('beforeSubmit', "#{$this->useWithActiveForm}", function () {
+            if ($(this).find('.has-error').length < 1) {
+                $.ajax({$this->ajaxOptions});
+            }
+            return false; // Cancel form submitting.
+        });
+SEL;
+
+        $view->registerJs($js);
+
+
+
     }
 
 } 
