@@ -122,7 +122,7 @@ class AjaxSubmitButton extends Widget
             $this->ajaxOptions['data'] = new JsExpression('$(this).parents("form").serialize()');
 
         $this->ajaxOptions= Json::encode($this->ajaxOptions);
-        $view->registerJs("$('#".$this->options['id']."').click(function() {
+        $view->registerJs("$('#".$this->options['id']."').unbind('click').click(function() {
                 " . (null !== $this->clickedButtonVarName ? "var {$this->clickedButtonVarName} = this;" : "") . "
                 $.ajax(" . $this->ajaxOptions . ");
                 return false;
@@ -147,7 +147,7 @@ class AjaxSubmitButton extends Widget
         $this->ajaxOptions= Json::encode($this->ajaxOptions);
 
 $js = <<<SEL
-        $(document).on('beforeSubmit', "#{$this->useWithActiveForm}", function () {
+        $(document).unbind('beforeSubmit').on('beforeSubmit', "#{$this->useWithActiveForm}", function () {
             if ($(this).find('.has-error').length < 1) {
                 $.ajax({$this->ajaxOptions});
             }
