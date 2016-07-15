@@ -147,7 +147,7 @@ class AjaxSubmitButton extends Widget
         $this->ajaxOptions= Json::encode($this->ajaxOptions);
 
 $js = <<<SEL
-        $(document).unbind('beforeSubmit').on('beforeSubmit', "#{$this->useWithActiveForm}", function () {
+        $(document).unbind('beforeSubmit.{$this->useWithActiveForm}').on('beforeSubmit.{$this->useWithActiveForm}', "#{$this->useWithActiveForm}", function () {
             if ($(this).find('.has-error').length < 1) {
                 $.ajax({$this->ajaxOptions});
             }
