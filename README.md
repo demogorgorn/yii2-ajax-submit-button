@@ -1,6 +1,12 @@
 AjaxSubmitButton for Yii 2
 =====================================
 
+[![Latest Stable Version](https://poser.pugx.org/demogorgorn/yii2-ajax-submit-button/v/stable)](https://packagist.org/packages/demogorgorn/yii2-ajax-submit-button)
+[![Total Downloads](https://poser.pugx.org/demogorgorn/yii2-ajax-submit-button/downloads)](https://packagist.org/packages/demogorgorn/yii2-ajax-submit-button)
+[![License](https://poser.pugx.org/demogorgorn/yii2-ajax-submit-button/license)](https://packagist.org/packages/demogorgorn/yii2-ajax-submit-button)
+[![Monthly Downloads](https://poser.pugx.org/demogorgorn/yii2-ajax-submit-button/d/monthly)](https://packagist.org/packages/demogorgorn/yii2-ajax-submit-button)
+
+
 This is the AjaxSubmitButton widget that renders an ajax button which is very similar to ajaxSubmitButton from Yii1 for Yii 2. 
 
 Example of usage of the widget with form and other custom widget (in this case Select2 widget).
