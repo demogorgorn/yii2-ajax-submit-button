@@ -49,7 +49,7 @@ use demogorgorn\ajax\AjaxSubmitButton;
 <div id="output"></div>
 ```
 
-Please note: that #output is a div element which will be updated.
+> Please note: that #output is a div element which will be updated.
 
 In controller:
 ```php
@@ -133,15 +133,15 @@ It's possible to use the widget with your own custom preloader.
 
 ### Widget's options
 
-Variable | Description
------------- | -------------
-ajaxOptions | array of js ajax options.
-options | array of the HTML attributes and other options of the widget's container tag
-tagName | (string) the tag to use to render the button (by default is 'button'. You can specify, for example, 'a' tag).
-label | (string) button's label
-encodeLabel | (boolean) whether the label should be HTML-encoded.
-clickedButtonVarName | (string) js object name. It is unused when useWithActiveForm is enabled.
-useWithActiveForm | (boolean) whether the button should not be used with ActiveForm. (string) the id of ActiveForm to use the button with.
+Variable | Description | Type
+------------ | ------------- | -------------
+ajaxOptions | ajax options | Array
+options | HTML attributes and other options of the widget's container tag | Array
+tagName | the tag to use to render the button (by default is 'button'. You can specify, for example, 'a' tag) | String
+label | button's label | String
+encodeLabel | whether the label should be HTML-encoded | Boolean
+clickedButtonVarName | js object name. It is unused when useWithActiveForm is enabled | String
+useWithActiveForm | whether the button should not be used with ActiveForm. the id of ActiveForm to use the button with | Boolean / String
 
 ## Installation
 ------------
