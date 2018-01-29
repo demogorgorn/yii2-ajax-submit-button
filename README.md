@@ -140,6 +140,8 @@ ajaxOptions | ajax options | Array
 options | HTML attributes and other options of the widget's container tag | Array
 tagName | the tag to use to render the button (by default is 'button'. You can specify, for example, 'a' tag) | String
 label | button's label | String
+icon | button's icon | String (e.g. 'fa fa-download')
+iconPosition | button icon position | const (ICON_POSITION_LEFT or ICON_POSITION_RIGHT)
 encodeLabel | whether the label should be HTML-encoded | Boolean
 clickedButtonVarName | js object name. It is unused when useWithActiveForm is enabled | String
 useWithActiveForm | whether the button should not be used with ActiveForm. the id of ActiveForm to use the button with | Boolean / String
