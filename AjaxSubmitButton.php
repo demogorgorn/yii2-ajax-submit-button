@@ -52,9 +52,9 @@ class AjaxSubmitButton extends Widget
     /**
      * Icon positions
      */
-    protected const ICON_POSITION_LEFT = 'left';
+    public const ICON_POSITION_LEFT = 'left';
 
-    protected const  ICON_POSITION_RIGHT = 'right';
+    public const  ICON_POSITION_RIGHT = 'right';
 
     public $ajaxOptions = [];
 
