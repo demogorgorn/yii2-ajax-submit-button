@@ -132,6 +132,33 @@ It's possible to use the widget with your own custom preloader.
 ?>
 ```
 
+### File Uploads
+
+AjaxSubmitButton fully supports file uploads. 
+For example (look at the comments):
+
+```php
+<?php AjaxSubmitButton::begin([
+            'label' => 'Сохранить',
+            'useWithActiveForm' => 'add-form',
+            'ajaxOptions' => [
+                'type' => 'POST',
+                'processData' => false, // Don't process the files
+                'contentType' => false, // Set content type to false as jQuery will tell the server its a query string request
+                'data' => new \yii\web\JsExpression("new FormData($('#add-form')[0])"), // Do not stringify the form
+                'success' => new \yii\web\JsExpression("function(data) {
+                if (data.status == true) 
+                {
+                    // process result
+                }                                            
+            }"),
+            ],
+            'options' => ['class' => 'btn btn-primary', 'type' => 'submit', 'id' =>'add-button'],
+        ]);
+        AjaxSubmitButton::end(); ?>
+```
+
+
 ### Widget's options
 
 Variable | Description | Type
