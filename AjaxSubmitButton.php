@@ -57,6 +57,7 @@ class AjaxSubmitButton extends Widget
     const  ICON_POSITION_RIGHT = 'right';
 
     public $ajaxOptions = [];
+    public $iconOptions = [];
 
     /**
      * @var array the HTML attributes for the widget container tag.
@@ -121,7 +122,7 @@ class AjaxSubmitButton extends Widget
         $label = $this->encodeLabel ? Html::encode($this->label) : $this->label;
 
         if ($this->icon !== null) {
-            $icon = Html::tag('i', '', ['class' => $this->icon]);
+            $icon = Html::tag('i', '', array_merge(['class' => $this->icon], $this->iconOptions));
             $label = strcasecmp($this->iconPosition,
               self::ICON_POSITION_LEFT) === 0 ? sprintf('%s %s', $icon,
               $label) : sprintf('%s %s', $label, $icon);
